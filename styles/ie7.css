@@ -1,0 +1,33 @@
+
+/* the scrollbar for the posts-info window hides some of the content */
+#posts-info li { 
+	margin-right:29px; 
+}
+
+/*IE can't use opacity filter on make a semitransparent .png */
+div.zoom div.dropshadow {
+	background:url(../images/word-info-shadow-light.png) repeat-x top left;
+	opacity:1;
+}
+#vis.live #date-info div.dropshadow {
+	background:url(../images/word-info-shadow-light.png) repeat-x top left;
+}
+
+/*IE wants bigger margins. */
+#date-info span.loading {
+	font-size:1.6em;
+	font-weight:bold;
+	position:absolute;
+	top:0;
+	left:0;
+	margin-left:2.4em;
+	margin-bottom:.1em;
+	margin-top:0;
+}
+/*ie wants way bigger letter spacing */
+h1 span.main  {
+	letter-spacing:-.4em;
+}
+#blog-names li {
+	width:85%;
+}

@@ -1,0 +1,359 @@
+/* CSS RESET */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,
+dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,
+table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-weight:inherit;font-style:inherit;
+font-size:100%;font-family:inherit;vertical-align:baseline;}
+:focus{outline:0;}
+body{line-height:1;color:black;background:white;}
+ol,ul{list-style:none;}
+table{border-collapse:separate;border-spacing:0;}
+caption,th,td{text-align:left;font-weight:normal;}
+blockquote:before,blockquote:after,q:before,q:after{content:"";}
+blockquote,q{quotes:"" "";}
+/* END CSS RESET */
+
+/* whole page 
+**********************************************************************/
+
+body {
+	font-family: verdana, sans-serif;
+	background:#444 url(../images/body-bg.png) top left repeat-x;
+}
+em {
+	font-style:italic
+}
+strong {
+	font-weight:bold
+}
+a {
+	text-decoration:none;
+}
+a:hover {
+	text-decoration:underline;
+}
+#wrapper {
+	position:relative;
+	width:98%;
+	margin:0 2% 0 0;
+}
+/* #faq 
+************************************************************************/
+#faq {
+	background:#333333 url(../images/faq-bg.png) repeat-x scroll 0 0;
+	border:1px solid #555555;
+	display:none;
+	height:30em;
+	margin:0 0 0 -3%;
+	overflow-y:auto;
+	padding:1em 1em 1em 2em;
+	width:31em;
+}
+#faq a {
+	color:#217726;
+}
+#faq h2 a {
+	position:absolute;
+	top:.5em;
+	right:0;
+	font-size:.5em;
+}
+#faq h2 {
+	font-weight:bold;
+	font-size:1.8em;
+	color:#217726;
+	border-bottom:2px solid #444;
+	position:relative;
+}
+	
+#faq dl{
+	width:100%;
+	font-size:.8em;
+	line-height:1.2;
+}
+#faq dt {
+	color:#217726;
+	margin:.7em 0 .3em;
+	font-weight:bold;
+}
+#faq dd {
+	color:#999;
+	margin-left:.5em;
+}
+#faq dt.selected {
+	background:#217726;
+	color:#fff;
+}
+
+	
+
+	
+
+
+
+/* #about 
+************************************************************************/
+#about {
+	position:absolute;
+	width:44%;	
+	min-height:60em;
+	border-left:1px solid #111;
+	border-right:1px solid #555;
+	top:0;
+	left:35em;
+	background:url(../images/about-bg.png) repeat-y top left;
+	background-color:#333;
+	padding:1em;
+	overflow:hidden;
+}
+#about a {
+	color:#217726;
+}
+#about h2{
+	font-weight:bold;
+	font-size:1.4em;
+	color:#777;
+}
+
+
+/* main heading */
+h1 {
+	font-size:1.5em;
+	color:#fab002;
+	font-weight:bold;
+	text-align:left;
+	font-family:helvetica, arial, sans-serif;
+	line-height:.9;
+	padding:.5em;
+}
+h1 span.main {
+	letter-spacing:-.1em;
+	font-weight:900;
+	display:block;
+	font-size:3em;
+}
+h1 span.subtitle {
+	letter-spacing:-.05em;
+}
+#about h1 a {
+	color:#fab002;
+}
+
+/* nav */
+#about #nav {
+	width:103%;
+	background:#444 url(../images/about-bg.png) repeat-y left;
+	overflow:hidden;
+	border-top:1px solid #111;
+	border-bottom:1px solid #111;
+	padding-left:1em;
+	margin-left:-1em;
+}
+#about ul#nav-links li{
+	float:left;
+	margin:0;
+	padding:0;
+	list-style-type:none;
+}
+#about ul#nav-links li a{
+	color:#fff;
+	font-weight:bold;
+	padding: .5em 1em;
+	float:left;
+}
+#about ul#nav-links li a:hover{
+	background:#217726;
+}
+#about ul#submit-links {
+	float:right;
+}
+#about ul#submit-links li {
+	margin:.5em .5em 0 0;
+	float:right;
+}
+#about ul#submit-links img.hide{
+	display:none;
+}
+
+/* body text */
+#about #expl {
+	width:97.5%;
+	padding:2%;
+}
+#expl p, #expl li {
+	color:#999;
+	margin-top:.5em;
+	line-height:1.4;
+}
+#expl h2 {
+	border-bottom:1px solid #777;
+	width:99%;
+}
+
+#expl p {
+	color:#217726;
+}
+#expl li {
+	margin-left:2em;
+	list-style-type:circle;
+	font-size:.8em;
+}
+#expl ul {
+	width:90%;
+}
+#account-info {
+	padding:2%;
+	display:none;
+}
+#account-info h2{
+	color:#217726;
+	margin:1em 0 .2em;
+}
+#account-info p{
+	font-size:.9em;
+	padding:1%;
+	border-color:#444;
+	color:#aaa;
+	line-height:1.3;
+}
+
+/* the account-creation form
+************************************************************************/
+#make-account{
+	padding:1%;
+	margin:1.5em 0;
+	display:none;
+}
+#make-account h2{
+	color:#217726;
+}
+	
+form {
+	background:#3a3a3a none repeat scroll 0 0;
+	border:1px solid #217726;
+	overflow:hidden;
+	padding:1%;
+	width:97.5%;
+}
+label {
+	display:block;
+	float:left;
+	clear:left;
+	width:22%;
+	margin-right:1%;
+	text-align:right;
+	color:#aaa;
+	font-weight:bold;
+}
+label span.paren{
+	font-size:.7em;
+	font-weight:normal;
+	display:block;
+}
+	
+input {
+	float:left;
+	width:50%;
+	margin-top:.2em;
+	color:#555;
+}
+
+input#submit {
+	clear:left;
+	margin-left:23%;
+	color:#333;
+}
+#about #make-account label a.halp {
+	padding-left:16px;
+	background:url(../images/halp.png) 0 75% no-repeat;
+	color:#aaa;
+}
+#about #make-account label a.halp:hover {
+	text-decoration:none;
+	color:#217726;
+}
+
+/*other people's feeds
+************************************************************************/
+
+#other-feeds {
+	padding:1%;
+	margin:1em 0;
+}
+#other-feeds h2{
+	position:relative;
+}
+#other-feeds h2 a{
+	text-align:right;
+	font-size:.5em;
+	position:absolute;
+	top:.4em;
+	right:4%;
+}
+
+#other-feeds ul {
+	background:#3a3a3a none repeat scroll 0 0;
+	border:1px solid #666;
+	overflow-y:scroll;
+	padding:2%  1% 1%;
+	width:97.5%;
+	height:6em;
+}
+#other-feeds li {
+	list-style-type:none;
+	margin-left:0;
+	font-size:.8em;
+	color:#999;
+}
+#other-feeds li a{
+	margin-right:2%;
+	float:left;
+	clear:left;
+	text-align:right;
+	width:25%;
+	font-weight:bold;
+}
+#other-feeds li span.num-feeds{
+	font-size:.9em;
+	color:#777;
+	margin-left:.5em;
+}
+#other-feeds li span.desc{
+	width:65%;
+	float:left;
+	margin-bottom:.5em;
+}
+
+/* loading and error messages 
+************************************************************************/
+
+#vis #main-load, #account-errors {
+	position:absolute;
+	background:#fab002;
+	color: #fff;
+	padding:1em;
+	font-size:1.2em;
+	border:1px solid #333;
+	margin-top:3em;
+}
+#account-errors {
+	width:41%;
+	margin-top:9em;
+}
+
+#vis #main-load img {
+	display:block;
+	margin: .5em auto 0;
+}
+
+/* submit buttons; these are actually in the vis div, but it makes more sense to style them here */
+#submit-to {
+	float:right;
+}
+#submit-to a {
+	color:#217726;
+	float:right;
+	margin:.5em .5em 0;
+	clear:right;
+	font-size:.8em;
+	font-weight:bold;
+}

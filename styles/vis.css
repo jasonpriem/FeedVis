@@ -1,0 +1,732 @@
+
+
+
+/*the whole visualization div*/
+#vis {
+	margin:3em 1em 1em;
+	width:33em;
+	top:0;
+	left:0;
+	position:absolute;
+}
+
+
+
+/* the #cal div, which contains the calendar ul:
+**************************************************************************************************
+**************************************************************************************************
+**************************************************************************************************/
+
+#cal {
+	position:relative;
+}
+#cal-top {
+	position:relative;
+	width:100%;
+	overflow:hidden;
+}
+#cal h2#title {
+	color:#ccc;
+	font-size:1.1em;
+	font-weight:bold;
+	float:left;
+	width:19em;
+	
+}
+#cal h2#title a{
+	text-decoration:underline;
+	color:#eee;
+	font-size:100%;
+	float:left;
+}
+#cal h2#title span {
+	clear:left;
+	float:left;
+	display:block;
+	font-size:0.6em;
+	margin:0.6em 0.5em;
+	width:100%;
+}
+#cal h2#title a.filtered{
+	color:#fab002;
+}
+#cal h2#title a.filtered:hover, #cal h2#title a:hover {
+	color:#29b231;
+}
+
+/* the calendar controls:
+-------------------------------------------*/
+#cal #cal-controls {
+	height:1em;
+	position:absolute;
+	right:0;
+	bottom:0;
+}
+#cal div#period-len {
+	height:1.2em;
+	width:13.5em;
+	position:absolute;
+	bottom:0;
+	right:0;
+	background-color:#888;
+	border:1px solid #333;
+	border-bottom:none;
+	margin-right:.2em;
+	overflow:hidden;
+	font-size:.8em;
+}
+
+#cal div#period-len h2{
+	color:#ddd;
+	float:left;
+	font-size:0.8em;
+	font-weight:normal;
+	height:1em;
+	padding:0.2em 0.5em 0.5em 0;
+	text-align:right;
+	width:10em;
+}
+#cal div#period-len ul{
+	bottom:-0.5em;
+	font-size:0.8em;
+	height:1em;
+	float:right;
+}
+
+#cal div#period-len li{
+	float:right;
+}
+#cal div#period-len li a{
+	display:block;
+	color:#ddd;
+	padding:.3em .5em .2em;
+}
+#cal div#period-len li a:hover {
+	color:#fff;
+	background: #fab002;
+}
+#cal div#period-len li a.selected{
+	background:#fab002;
+	color:#666;
+}
+
+
+
+
+/* the calendar ul itself:
+-------------------------------------------*/
+
+/* styles for stuff that changes */
+#cal ul li.center h3 {
+	display:block;
+}
+#cal ul.calendar li.window dd {
+	background-color: #555;
+}	
+#cal ul.calendar li.window {
+	background-color: #ccc;
+}
+#cal ul.calendar li.selected dd {
+	background-color: #fab002;
+	text-indent:0;
+	color:#fff;
+}
+#cal ul.calendar li.selected.window dd {
+	background-color:#d59d1a;
+}
+#cal ul.calendar li.selected {
+	border-bottom:.2em solid #fab002;
+}
+#cal ul.calendar.inactive {
+	cursor:default;
+}
+
+
+/*stuff that doesn't change */
+#cal ul.calendar {
+	clear:both;
+	height: 6em; 
+	padding:.2em;
+	border:.1em solid #333;
+	cursor:pointer;
+	background:#bbb;
+}
+#cal ul.calendar li {
+	height:5em;
+	position:relative;
+	float:left;
+	background:#ddd;
+}
+#cal ul.calendar dt {
+	text-indent:-9999em;
+}
+#cal ul.calendar span.day {
+	display:none;
+}
+#cal ul.calendar h3 {
+	display:none;
+}
+
+
+#cal ul.calendar dd {
+	text-indent:-9999em;
+	text-align:center;
+	display: block; 
+	position: absolute; 
+	bottom: 1px; 
+	left: 0; 
+	overflow: hidden;
+	width: 100%; 
+	height: 0;
+	background: url(../images/day-border.png) no-repeat bottom left;
+	background-color:#777;
+	color:#fff;
+	font-size:55%
+}
+#cal ul.calendar dd.benchmark {
+	text-indent:0;
+}
+#cal ul.calendar li h3 {
+	position: absolute; 
+	bottom: -1.5em; 
+	line-height: 1.5em;
+	left: 0;
+	color:green;
+	font-weight:normal;
+	font-size:80%;
+	color:#777;
+	text-align:center;
+	margin-left:-4em;
+	width:10em;
+	color:#333;
+
+}
+
+/*layout for the pointer underneath the chart*/
+#point {
+	display:none;
+	clear:both;
+}
+#point img {
+	margin-top:-.5em;
+	height:1.5em;
+	width:3em;
+	position:absolute;
+}
+
+
+/* styles for date-info, which includes the tagcloud and all its associated data
+**************************************************************************************************
+**************************************************************************************************
+**************************************************************************************************/
+
+/*  #date-info itself: */
+
+#date-info {
+	border-left:.1em solid #fab002;
+	border-right:.1em solid #fab002;
+	border-bottom:.1em solid #fab002;
+	border-top:none;
+	position:relative;
+	clear:both;
+	overflow:hidden;
+	width:99.5%; /*needed for clearing floats*/
+	min-height:0;
+	background:url(../images/tagcloud-bg.png) repeat-y top left;
+	background-color:#ddd;
+
+}
+
+#vis.live #date-info div.dropshadow {
+	display:block;
+	position:absolute;
+	z-index:4;
+	height:15px;
+	background:url(../images/word-info-shadow.png) repeat-x top left;
+	width:100%;
+}
+#vis.live #date-info div#date-info-ds {
+	top:3.5em;
+	left:0;
+	opacity:.2;
+}
+
+
+/*styles for the header div inside date-info
+-----------------------------------------------------*/
+
+#date-info div.header {
+	background:#fab002;
+	height:3.5em;
+}
+#date-info div.header p {
+	color:#fff;
+}
+#date-info div.header p.init {
+	text-align:center;
+	font-weight:bold;
+	padding-top:1em;
+}
+#date-info p.window-info {
+	clear:both;
+	color:#fff;
+	font-size:.7em;
+	padding:0 0 0 2em;
+}
+#date-info div.header p.loading {
+	text-align:left;
+	padding:.2em 0 0 3em;
+}
+#date-info p.loading img { /* the animated 'loading...' gif */
+	height:.2em;
+	margin-left:.1em;
+}
+#date-info .header h2 {
+	font-size:1.3em;
+	font-weight:bold;
+	color:#fff;
+	padding:.5em 0 0 1em;
+	float:left;
+}
+#date-info .header span.blog-name {
+	background:#fab002;
+	margin-top:-1em;
+}
+/*the distribution graph inside the header*/
+ul#dist-graph {
+	float:left;
+	height:1em;
+	margin:.8em 0 .5em 1em;
+	padding:0;
+}
+#dist-graph li {
+	position:relative;
+	float:left;
+	width:.1em;
+	height:1em;
+}
+#dist-graph li span {
+	text-indent:-9999em;
+	display:block;
+	background:#fff;
+	position:absolute;
+	left:0;
+	bottom:0;
+	width:100%;
+	height:50%;
+}
+
+/*the list of authors:
+-----------------------------------------*/
+#blog-names {
+	width:40%;
+	padding-left:2%;
+	border-left:1px solid #999;
+	float:right;
+	display:none;
+	overflow:hidden;
+	background:url(../images/blog-names-bg.png) repeat-y top left;
+	background-color:#d9d9d9;
+}
+#blog-names h3 {
+	font-size:90%;
+	border-bottom: 1px solid #999;
+	margin: .5em 0 0 -4%;
+	padding: .5em 0 0.3em 0.4em;
+	color:#555;
+}
+#blog-names h3 span {
+	cursor:pointer;
+	font-size:90%;
+	font-weight:bold;
+	margin-left:20%;
+	padding:2%;
+}
+#blog-names h3 span:hover {
+	color:navy;
+	text-decoration:underline;
+	background:#ccc;
+}
+#blog-names ul {
+	float:right;
+	width:100%;
+	height:45em;
+	overflow-y:scroll;
+	font-size:70%;
+}
+#blog-names li {
+	float:left;
+	clear:both;
+	line-height:1.5;
+	color:#555;
+	cursor:pointer;
+	padding:.1em 2% 0;
+	width:96%;
+}
+#blog-names a {
+	display:none;
+}
+/* I can't figure out a good and non-confusing way to
+display these, so I'm just going to hide them for now.
+#blog-names a {
+	color:blue;
+	text-decoration:underline;
+	display:none;
+	font-size:90%;
+#blog-names li:hover a {
+	display:inline;
+	text-decoration:none;
+}
+#blog-names li:hover a:hover {
+	text-decoration:underline;
+}
+*/
+#blog-names li:hover {
+	background:#ccc;
+}
+#blog-names li:hover {
+	color:#222;
+}
+#blog-names li.selected{
+	background:#fab002;
+	color:#fff;
+	font-weight:bold;
+	font-size:110%;
+}
+#blog-names h3.selected span {
+	background:#fab002;
+	color:#fff;
+}
+
+
+	
+	
+/*styles for the tagcloud div, inside #date-info 
+------------------------------------------------------------*/
+#tagcloud {
+	float:left;
+	padding-top:3%;
+	border-left: .1em solid #ddd;
+	width:56%;
+	overflow:hidden;
+}
+#tagcloud a {
+	text-decoration:none;
+	line-height:1;
+	float:left;
+}
+#tagcloud li {
+	clear:both;
+	float:left;
+	padding-left:25%;
+	width:100%;
+	font-size:190%;
+}
+#tagcloud li:hover {
+	padding-left:0;
+	margin-right:0;
+	width:100%;
+}
+#tagcloud li:hover div.stats {
+	display:block;
+}
+#tagcloud li div.stats {
+	cursor:help;
+	float:left;
+	text-align:right;
+	width:25%;
+	display:none;
+}
+#tagcloud li div.stats span:hover {
+	font-weight:bold;
+}
+#tagcloud span.freq-change {
+	float:right;
+	padding:0 .5em;
+}
+#tagcloud span.window-freq {
+	float:right;
+	color:#666;
+}
+#tagcloud span.window-freq, #tagcloud span.freq-change {
+	font-size:33%;
+}
+
+
+/*
+#zoom:
+styles for the display of info for a particular word; still lives inside date-info
+**************************************************************************************************
+**************************************************************************************************
+**************************************************************************************************/
+
+#zoom { /* contains #word-info */
+	z-index:5;
+	background:#eee;
+}
+div#zoom div.dropshadow {
+	position:absolute;
+	top:2.4em;
+	left:.1em;
+	z-index:5;
+	height:15px;
+	background:url(../images/word-info-shadow.png) repeat-x top left;
+	opacity:.6;
+}
+
+/* #word-info:
+*  contains information about the word we zoomed in on.
+-----------------------------------------------------------------*/
+
+#word-info{
+	color:#fff;
+	background:url(../images/word-info-bg.png) repeat-x bottom left;
+	width:100%;
+	height:2.4em;
+	position:relative;
+	z-index:5;
+	border-bottom:.1em solid #000;
+}
+
+/*the controls on the right side */
+#word-info a {
+	float:right;
+	cursor:pointer;
+	padding-top:.4em;
+	font-size:.6em;
+	font-weight:bold;
+	height:3em;
+	text-align:center;
+}
+#word-info a:hover {
+	color:#ccc;
+	padding-top:.6em;
+	background:url(../images/button-down-bg.png) repeat-x top left;
+}
+
+#word-info a.close-button {
+	background:url(../images/close.png) no-repeat top right;
+	text-indent:-9999em;
+	width:40px;
+	background-position:0 -100px;
+	right:0;
+}
+#word-info a.close-button:hover {
+	background-position:0 -3px;
+}
+
+#word-info a.exp-col {
+	width:5em;
+	color:#ddd;
+}
+
+#word-info #jump-to-day {
+	float:right;
+	width:11em;
+	margin-right:.5em;
+}
+#word-info #jump-to-day h4 {
+	float:right;
+	margin:.4em .5em 0 0;
+	font-size:.6em;
+	font-weight:bold;
+}
+#word-info #jump-to-day li {
+	float:right;
+	text-align:center;
+}
+#word-info #jump-to-day li a{
+	color:#ddd;
+	width:1.9em;
+	float:left;
+	font-weight:normal;
+}
+
+/*the frequency stats */
+
+#word-info span.freq-change, #word-info span.window-freq {
+	font-size:.6em;
+	width:3.5em;
+	font-weight:bold;
+	position:absolute;
+	left:.5em;
+	text-align:center;
+	padding:.3em 0;
+}
+#word-info span.window-freq {
+	top:.2em;
+}
+
+span.freq-change {
+	top:1.8em;
+}
+
+/*the expanding list of versions for each word*/
+
+#date-info span.loading { /*this is replaced by the ul; we want the transition to be smooth, so it should look the same */
+	font-size:1.6em;
+	font-weight:bold;
+	position:absolute;
+	top:0;
+	left:0;
+	margin-left:1.8em;
+	margin-bottom:.1em;
+	margin-top:.2em;
+}
+#word-info span.loading img { /* the animated 'loading...' gif */
+	height:.2em;
+	margin-left:.1em;
+}	 
+	 
+#word-info ul#versions {
+	padding: .2em .2em 0 .2em;
+	position:absolute;
+	top:0;
+	left:0;
+	z-index:10;
+	font-weight:bold;
+}
+#word-info ul#versions li {
+	margin-bottom:.2em;
+	float:left;
+	clear:left;
+	font-size:1.1em;
+}
+#word-info ul#versions li span.percent{
+	text-indent:-9999em;
+	width:3.5em;
+	display:block;
+	padding-right:.5em;
+	float:left;
+	font-size:.6em;
+	font-weight:normal;
+	color:#aaa;
+}
+#word-info ul#versions.expanded {
+	padding-bottom:.4em;
+	border:1px solid #000;
+	background:#333;
+}
+#word-info ul#versions.expanded span.percent {
+	text-align:right;
+	text-indent:0;
+}
+
+/* #posts
+*  a list of the posts that use the word; lives in #zoom along with #word-info
+-----------------------------------------------------------------*/
+
+#posts {
+	clear:both;
+	font-size:80%;
+	overflow:scroll;
+	overflow-x:hidden;
+	background:#ddd;
+	position:relative;
+	border:.2em solid #555 ;
+	border-top:none;
+}
+#posts ul{
+	float:left;
+	background:url(../images/posts-day-shadow.png) no-repeat bottom left;
+	background-color:#eee;
+}
+#posts h4 {
+	padding:1em 0 .3em 5em;
+	border-bottom:.1em solid #555;
+	font-weight:bold;
+	float:left;
+	width:100%;
+	background:url(../images/post-day-hd-bg.png) repeat-x bottom;
+	background-color:#dcdcdc;
+}
+#posts h4 span{
+	border:.1em solid #555;
+	border-bottom:none;
+	padding:0.3em 1em;
+	color:#333;
+	background:#eee;
+}
+
+#posts li {
+	border-bottom:.1em solid #ccc;
+	padding-top: .8em;
+	float:left;
+	width:100%;
+}
+
+#posts span.stem-uses {
+	cursor:help;
+	float:left;
+	font-size:.8em;
+	color:#ccc;
+	height:2em;
+	width:1.5em;
+	padding-left:1em;
+}
+#posts span.stem-uses.two {
+	color:#666;
+}
+#posts span.stem-uses.three {
+	color:#000;
+}
+#posts a.title {
+	color:navy;
+	float:left;
+	width:15em;
+	line-height:1.2;
+	padding-bottom:.5em;
+	text-decoration:underline;
+}
+
+#posts cite {
+	line-height:1.2;
+	float:right;
+	text-align:right;
+	color:#444;
+	width:15em;
+	font-style:normal;
+	padding-bottom:.5em;
+	margin-right:1em;
+}
+#posts div.extry {
+	border-top:.1em dashed #ccc;
+	clear:both;
+	margin: 0 1em .5em;
+}
+#posts p {
+	width:100%;
+	color:#111;
+	line-height:1.3;
+	font-size:90%;
+	padding:.5em 0 .5em .5em;
+}
+#posts div.extry span.stats {
+	font-weight:bold;
+	color:#333;
+	margin-left:1em;
+}
+
+/*
+#tooltip:
+**************************************************************************************************
+**************************************************************************************************
+**************************************************************************************************/
+#tooltip {
+	background:#fef9b6;
+	border:1px solid #333;
+	font-size:.8em;
+	padding:1em;
+	position:absolute;
+	width:10em;
+	color:#222;
+	line-height:1.3;
+}
+#tooltip.grande {
+	width:18em;
+}
+#tooltip.grande p{
+	padding-top:.5em;
+}
+
+
